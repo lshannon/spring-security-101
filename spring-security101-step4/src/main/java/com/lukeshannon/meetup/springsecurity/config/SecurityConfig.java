@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/images", "/hello").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/login");
+		http.authorizeRequests().antMatchers("/images", "/hello", "/login").permitAll()
+				.anyRequest().authenticated().and().formLogin().and().logout().permitAll();
 	}
 
 	/**
@@ -44,9 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth
-		  //.jdbcAuthentication()
-		   //.dataSource(dataSource);
-		   .userDetailsService(customDetailsService);
+		  .jdbcAuthentication()
+		   .dataSource(dataSource);
 	}
 
 }

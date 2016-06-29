@@ -49,6 +49,10 @@
 		<h1>CTO</h1>
 		<img src="../../images/cto.png" th:attr="src=@{/images/cto.png}" height="250"/>
 	</section>
+	
+	    <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
 
 	<footer> Copyright © W3Schools.com </footer>
 
