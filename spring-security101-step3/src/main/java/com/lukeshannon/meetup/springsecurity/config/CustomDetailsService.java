@@ -25,11 +25,11 @@ public class CustomDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
 		if (userName != null && userName.equalsIgnoreCase("ninja")) {
-			List<GrantedAuthority> authorities =new ArrayList<GrantedAuthority>();
+			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 			String shouldLookup = userName;
 			return new User(userName, shouldLookup, authorities);
-	}
+		}
 		throw new UsernameNotFoundException("There is no '" + userName + "'");
 	}
 
