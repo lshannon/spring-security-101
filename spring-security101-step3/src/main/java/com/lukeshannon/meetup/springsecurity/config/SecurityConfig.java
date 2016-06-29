@@ -22,6 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	DataSource dataSource;
+	
+	@Autowired
+	CustomDetailsService customDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -42,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			throws Exception {
 		auth
 		  .jdbcAuthentication()
-		    .dataSource(dataSource);
+		   .dataSource(dataSource);
+		    //auth.userDetailsService(customDetailsService);
 	}
 
 }
