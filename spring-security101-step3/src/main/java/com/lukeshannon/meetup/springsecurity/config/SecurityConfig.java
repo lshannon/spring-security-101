@@ -3,10 +3,15 @@
  */
 package com.lukeshannon.meetup.springsecurity.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 /**
  * @author lshannon
@@ -27,4 +32,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.httpBasic();
 	}
 	// @formatter:on
+	
 }

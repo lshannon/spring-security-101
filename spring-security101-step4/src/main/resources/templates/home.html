@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Simple Application</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -42,12 +42,19 @@
 	<header>
 		<h1>Meet The Team</h1>
 	</header>
+	
+	Logged user: <span sec:authentication="name">Bob</span>
+	Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+
 
 	<section>
 		<h1>CEO</h1>
 		<img src="../images/ceo.png" th:attr="src=@{/images/ceo.png}" height="250"/>
-		<h1>CTO</h1>
-		<img src="../../images/cto.png" th:attr="src=@{/images/cto.png}" height="250"/>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<h1>CTO</h1>
+			<img src="../../images/cto.png" th:attr="src=@{/images/cto.png}" height="250"/>
+		</div>
+		
 	</section>
 	
 	    <form th:action="@{/logout}" method="post">
