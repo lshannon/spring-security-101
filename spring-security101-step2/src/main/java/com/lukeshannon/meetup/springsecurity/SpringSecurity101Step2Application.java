@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurity101Step1Application {
+public class SpringSecurity101Step2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringSecurity101Step1Application.class, args);
+		SpringApplication.run(SpringSecurity101Step2Application.class, args);
 	}
 }
