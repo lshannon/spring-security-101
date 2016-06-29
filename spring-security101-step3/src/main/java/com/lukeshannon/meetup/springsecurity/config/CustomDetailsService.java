@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.lukeshannon.meetup.springsecurity.config;
 
@@ -23,11 +23,12 @@ public class CustomDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		
+
 		if (userName != null && userName.equalsIgnoreCase("ninja")) {
 			List<GrantedAuthority> authorities =new ArrayList<GrantedAuthority>();
-		    authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-		    return new User(userName,"should look this up somewhere", true,false, false, false, authorities);
+			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+			String shouldLookup = userName;
+			return new User(userName, shouldLookup, authorities);
 	}
 		throw new UsernameNotFoundException("There is no '" + userName + "'");
 	}

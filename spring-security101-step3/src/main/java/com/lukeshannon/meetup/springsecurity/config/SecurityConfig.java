@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.lukeshannon.meetup.springsecurity.config;
 
@@ -19,10 +19,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	DataSource dataSource;
-	
+
 	@Autowired
 	CustomDetailsService customDetailsService;
 
@@ -43,10 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth
-		  .jdbcAuthentication()
-		   .dataSource(dataSource);
-		    //auth.userDetailsService(customDetailsService);
+		auth.userDetailsService(customDetailsService);
 	}
 
 }
